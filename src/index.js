@@ -4,6 +4,10 @@ import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
+// import dotenv from 'dotenv';
+// import 'path';
+
+// dotenv.config();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

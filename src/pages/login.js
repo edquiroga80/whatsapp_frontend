@@ -1,7 +1,12 @@
-import React from 'react'
+import React from "react";
+import LoginForm from "../components/LoginForm";
 
 export default function Login() {
   return (
-    <div>login</div>
-  )
+    <div className="h-screen dark:bg-dark_bg_1 flex items-center justify-center py-[19px] overflow-hidden">
+      <div className="flex w-[1600px] mx-auto h-full">
+        <LoginForm />
+      </div>
+    </div>
+  );
 }

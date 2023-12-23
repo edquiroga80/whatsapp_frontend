@@ -1,21 +1,34 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { ChatIcon } from "./svg";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Register from "./pages/register";
+import { useSelector } from "react-redux";
 
 function App() {
+  const { user } = useSelector((state) => state.user);
+  console.log(user);
+
+  const { token } = user || {};
+  const socket = null;
   return (
-    <div>
-      <h1 className="text-green_1 font-bold bg-dark_bg_2">
-        Hola desde el FRONTEND
-      </h1>
-      <ChatIcon className="fill-amber-500" />
+    <div className="dark">
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route
+            exact
+            path="/"
+            element={
+              token ? <Home socket={socket} /> : <Navigate to="/login" />
+            }
+          />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/register" element={<Register />} />
         </Routes>
       </Router>
     </div>
